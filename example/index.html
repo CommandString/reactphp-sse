@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.js"></script>
+</head>
+<body>
+    <div style="min-height: 100vh" class="ui inverted segment">
+        <div class="ui header">Items</div>
+        <ul id="items"></ul>
+    </div>
+<script>
+let eventStream = new EventSource("http://localhost:8000/sse");
+
+eventStream.addEventListener("item", (event) => {
+    $("#items").append(`<li>${event.data}</li>`);
+    console.log(event);
+});
+
+eventStream.addEventListener("open", () => {
+    console.log("connected");
+    $.toast({
+        "title": "Connected to SSE server"
+    });
+})
+</script>
+</body>
+</html>

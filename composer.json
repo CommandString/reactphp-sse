@@ -1,0 +1,14 @@
+{
+    "name": "commandstring/reactphp-sse",
+    "description": "An SSE library built of ReactPHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CommandString\\Sse\\": "src/"
+        }
+    },
+    "require": {
+        "react/http": "^1.8"
+    }
+}

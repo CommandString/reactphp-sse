@@ -1,0 +1,10 @@
+{
+    "verbose": false,
+    "ignore": [
+        ".git",
+        ".idea"
+    ],
+    "exec": "php index.php",
+    "restartable": "r",
+    "ext": "php,html,json"
+}
